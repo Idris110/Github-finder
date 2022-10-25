@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from '../src/components/layout/Navbar';
+import Footer from '../src/components/layout/Footer';
 
 function App() {
   return (
@@ -10,17 +11,15 @@ function App() {
           <Route
             path="/"
             element={
-              <>
-                <div className='text-xl'>
-                  Hello work
-                </div>
-                <div className='btn'>
-                  click me
-                </div>
-              </>
+              <div className='text-xl'>
+                Hello work
+              </div>
             }
           ></Route>
+
+
         </Routes>
+        <Footer />
       </BrowserRouter>
     </div>
   );
