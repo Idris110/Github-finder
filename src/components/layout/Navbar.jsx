@@ -10,7 +10,15 @@ function Navbar({ title }) {
         <div className="flex-none mx-2 px-2">
           <FaGithub className='inline pr-2 mr-1 pb-1 text-4xl' />
           <Link to='/' className="text-lg font-bold">{title}</Link>
-          
+        </div>
+
+        <div className="flex-1">
+          <div className="flex justify-end">
+            <Link to='/' className="btn bn-ghost btn-sm-rounded-btn">
+              Home
+            </Link>
+            <Link to="/about" className="btn bn-ghost btn-sm-rounded-btn">About</Link>
+          </div>
         </div>
       </div>
     </nav>
