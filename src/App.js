@@ -6,8 +6,9 @@ import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 
 function App() {
+  // console.log(document.getElementsByTagName("html")[0].setAttribute("data-theme","cyberpunk"));
   return (
-    <div className="flex flex-col justify-between h-screen">
+    <div className="flex flex-col justify-between h-screen ">
       <BrowserRouter>
         <Navbar title={'GitHub Finder'} />
         

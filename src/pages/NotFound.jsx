@@ -1,5 +1,5 @@
 import React from 'react'
-import notFound from '../images/notFound.png';
+import notFound from '../components/layout/assets/notFound.png';
 import { FaHome } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 

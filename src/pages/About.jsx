@@ -8,7 +8,7 @@ function About() {
                 A React app to search GitHub profiles and see profile details.
                 <br />
                 To find more information
-                <a href='https://github.com/idris110/Github-finder'>
+                <a className='text-blue-700' href='https://github.com/idris110/Github-finder'>
                     {' '}
                     Github repository
                 </a>{' '}
