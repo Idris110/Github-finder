@@ -1,39 +1,40 @@
 import React from 'react'
 import { useState } from 'react'
 
-function UserSearch() {
+function UserSearch({ search, clear }) {
 
-  const [query, setQuery] = useState(""); 
+  const [query, setQuery] = useState("");
 
-  const userSearch = (e) =>{
+  const userSearch = (e) => {
     setQuery(e.target.value);
   }
 
-  const submitSearch = (e) =>{
+  const submitSearch = (e) => {
     e.preventDefault()
-    if(query === ''){
+    if (query === '') {
       alert("Please enter something");
-
-    }else{
-
-
-      setQuery("");
+    } else {
+      search(query);
+      // setQuery("");
     }
   }
 
   return (
-    <div className='grid grid-cols-1 xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-2 gap-8 mb-8'>
+    <div className='ml-5 mr-5 grid grid-cols-1 xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-2 gap-3 lg:mb-8 xl:mb-8 md:mb-8 '>
       <div className="">
-    <div className="form-control ml-5 mr-5">
-    <form onSubmit={submitSearch}>
-          <div className="relative">
-            <input type="text" value={query} onChange={userSearch} className="w-full pr-40 bg-gray-200 border-black input input-lg text-black" placeholder='Search' />
-            <button type="submit" className="absolute top-0 right-0 rounded-l-none btn btn-lg w-32">
-              Go
-            </button>
-          </div>
-        </form>
-    </div>
+        <div className="form-control">
+          <form onSubmit={submitSearch}>
+            <div className="relative">
+              <input type="text" value={query} onChange={userSearch} className="w-full pr-40 bg-gray-200 border-black input input-lg text-black" placeholder='Search' />
+              <button type="submit" className="absolute top-0 right-0 rounded-l-none btn btn-lg w-32">
+                Go
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div>
+        <button className="btn btn-ghost btn-lg" onClick={clear}>Clear</button>
       </div>
     </div>
   )

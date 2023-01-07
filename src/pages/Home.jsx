@@ -7,7 +7,7 @@ function Home() {
 
   return (
     <div>
-      <UserSearch/>
+      {/* <UserSearch/> */}
       <UserResults/>
     </div>
   )
