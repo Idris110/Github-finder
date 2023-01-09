@@ -16,20 +16,24 @@ function User() {
     const cap = (string) => (string.charAt(0).toUpperCase() + string.slice(1));
     const fetchUser = async () => {
         console.log("fetching data");
-        const response = await fetch(`https:/api.github.com/users/krishcshah`, {
-            headers: {
-                Authorization: `token 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`
-                // Authorization: `token ${process.env.KEY}`
+        try {
+            const response = await fetch(`https:/api.github.com/users/${params.login}`, {
+                headers: {
+                    Authorization: `token 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`
+                    // Authorization: `token ${process.env.KEY}`
+                }
+            })            
+            if (response.status === 404) {
+                window.location = '/notfound'
             }
-        })
-        if (response.status === 404) {
-            window.location = '/notfound'
-        }
-        else {
-            const data = await response.json();
-            console.log(data);
-            setUser(data);
-        }
+            else {
+                const data = await response.json();
+                console.log(data);
+                setUser(data);
+            }
+          } catch (error) {
+            console.log('There was an error', error);
+          }
     }
 
     const {
