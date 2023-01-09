@@ -16,7 +16,7 @@ function User() {
     const cap = (string) => (string.charAt(0).toUpperCase() + string.slice(1));
     const fetchUser = async () => {
         console.log("fetching data");
-        const response = await fetch(`https:/api.github.com/users/${params.login}`, {
+        const response = await fetch(`https:/api.github.com/users/krishcshah`, {
             headers: {
                 Authorization: `token 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`
                 // Authorization: `token ${process.env.KEY}`
