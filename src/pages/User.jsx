@@ -22,14 +22,16 @@ function User() {
                     Authorization: `token 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`
                     // Authorization: `token ${process.env.KEY}`
                 }
-            })            
+            })
+            console.log("Res status:"+ response.status);            
             if (response.status === 404) {
                 window.location = '/notfound'
             }
             else {
-                const data = await response.json();
-                console.log(data);
-                setUser(data);
+                // const data = await response.json();
+                // console.log(data);
+                // setUser(data);
+                console.log(response.json());
             }
         //   } catch (error) {
         //     console.log('There was an error', error);
