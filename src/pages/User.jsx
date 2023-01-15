@@ -17,7 +17,8 @@ function User() {
     const fetchUser = async () => {
         console.log("fetching data");
         // try {
-            const response = await fetch(`https:/api.github.com/users/${params.login}`, {
+            console.log("login:"+params.login);
+            const response = await fetch(`https://api.github.com/users/${params.login}`, {
                 headers: {
                     Authorization: `token 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`
                     // Authorization: `token ${process.env.KEY}`
@@ -31,7 +32,10 @@ function User() {
                 // const data = await response.json();
                 // console.log(data);
                 // setUser(data);
-                console.log(response.json());
+                response.json().then((data) => {
+                    console.log(data);
+                    setUser(data);
+                });
             }
         //   } catch (error) {
         //     console.log('There was an error', error);
