@@ -16,15 +16,17 @@ function UserResults() {
   }, []);
 
   useEffect(() => {
+    if(users !== undefined)
     window.localStorage.setItem('users',JSON.stringify(users));
   }, [users]);
   
   const fetchUsers = async (e) => {
     setLoading(true)
+    console.log(e)
     const response = await fetch(`${endPoint}/search/users?q=${e}`, {
       headers: {
-        Authorization: `token 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`
-        // Authorization: `token ${process.env.KEY}`
+        // Authorization: `token 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`
+        Authorization: `token ${process.env.REACT_APP_GITHUB_KEY}`
       }
     })
     const data = await response.json();
@@ -35,7 +37,8 @@ function UserResults() {
   const searchUsers = (e) =>{
     // console.log(e);
     fetchUsers(e);
-    setLoading(false)
+    setTimeout(()=>setLoading(false), 300);
+    
   }
 
   const clearSearch = () =>{

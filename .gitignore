@@ -1,6 +1,7 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 errors.txt
+.env
 # dependencies
 /node_modules
 /.pnp
@@ -18,7 +19,6 @@ errors.txt
 .env.development.local
 .env.test.local
 .env.production.local
-Z_dilip
 
 npm-debug.log*
 yarn-debug.log*

@@ -11,30 +11,20 @@ function User() {
     const params = useParams()
 
     useEffect(() => {
-        const lo = () => {
-            setLoading(false);
-        }
         fetchUser()
-        // setLoading(false);
-        if (document.readyState === 'complete') {
-            setLoading(false)
-        }
-        else {
-            window.addEventListener('load', lo);
-            // Remove the event listener when component unmounts
-            return () => window.removeEventListener('load', lo);
-        }
+        setTimeout(()=>setLoading(false),500);
     }, [])
 
     const cap = (string) => (string.charAt(0).toUpperCase() + string.slice(1));
     const fetchUser = async () => {
-        console.log("fetching data");
+        setLoading(true);
+        console.log(process.env.REACT_APP_GITHUB_KEY);
         // try {
         console.log("login:" + params.login);
         const response = await fetch(`https://api.github.com/users/${params.login}`, {
             headers: {
-                Authorization: `token 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`
-                // Authorization: `token ${process.env.KEY}`
+                // Authorization: `token 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`
+                Authorization: `token ${process.env.REACT_APP_GITHUB_KEY}`
             }
         })
         if (response.status === 404) {
