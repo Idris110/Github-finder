@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import LoadingAnim from '../layout/assets/loading.gif'
 import UserItem from './UserItem'
 import UserSearch from './UserSearch'
+import { InfinitySpin } from 'react-loader-spinner'
 
 const endPoint = 'https://api.github.com'
 
@@ -22,22 +23,21 @@ function UserResults() {
   
   const fetchUsers = async (e) => {
     setLoading(true)
-    console.log(e)
+    // console.log(e)
     const response = await fetch(`${endPoint}/search/users?q=${e}`, {
       headers: {
-        // Authorization: `token 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`
         Authorization: `token ${process.env.REACT_APP_GITHUB_KEY}`
       }
     })
     const data = await response.json();
     // console.log(data);
     setUsers(data.items)
+    setLoading(false);
   }
   
   const searchUsers = (e) =>{
     // console.log(e);
     fetchUsers(e);
-    setTimeout(()=>setLoading(false), 300);
     
   }
 
@@ -61,7 +61,11 @@ function UserResults() {
   }else{
     return(
       <div className="flex-1 flex justify-center items-center font-bold mb-20">
-        <img src={LoadingAnim} width="80px" alt="Loading..." />
+        {/* <img src={LoadingAnim} width="80px" alt="Loading..." /> */}
+        <InfinitySpin 
+            // width='150'
+            color="#4fa94d"
+            />
       </div>
     )
   }
