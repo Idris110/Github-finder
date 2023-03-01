@@ -1,9 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 
 function UserSearch({ search, clear }) {
-
-  const [query, setQuery] = useState("");
+  
+  const [query, setQuery] = useState(window.localStorage.getItem('query'));
+  
+    useEffect(()=>{
+      if(window.localStorage.getItem('query') === "null")
+        setQuery("")
+      else
+        setQuery(window.localStorage.getItem('query'));
+    },[]);
 
   const userSearch = (e) => {
     setQuery(e.target.value);
@@ -17,6 +24,11 @@ function UserSearch({ search, clear }) {
       search(query);
       // setQuery("");
     }
+  }
+
+  const handleClear = () => {
+    setQuery("");
+    clear();
   }
 
   return (
@@ -34,7 +46,7 @@ function UserSearch({ search, clear }) {
         </div>
       </div>
       <div>
-        <button className="btn btn-ghost btn-lg" onClick={clear}>Clear</button>
+        <button className="btn btn-ghost btn-lg" onClick={handleClear}>Clear</button>
       </div>
     </div>
   )
