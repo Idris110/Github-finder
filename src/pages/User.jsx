@@ -17,7 +17,7 @@ function User() {
 
     const cap = (string) => (string.charAt(0).toUpperCase() + string.slice(1));
     const fetchUser = async () => {
-        console.log(process.env.REACT_APP_GITHUB_KEY);
+        // console.log(process.env.REACT_APP_GITHUB_KEY);
         // try {
         console.log("login:" + params.login);
         const response = await fetch(`https://api.github.com/users/${params.login}`, {

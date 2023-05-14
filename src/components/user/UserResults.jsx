@@ -5,10 +5,11 @@ import UserSearch from './UserSearch'
 import { InfinitySpin } from 'react-loader-spinner'
 
 const endPoint = 'https://api.github.com';
-const beforeOffSetPx = Math.round(window.innerHeight * 0.40) + 26; //percent before rendering new
+const beforeOffSetPx = Math.round(window.innerHeight * 0.50) + 26; //percent before rendering new
 // const beforeOffSetPx = 30; //px before rendering new
 const initCards = 4*6;
 const cards = 4*1;
+const d = new Date();
 
 function UserResults() {
 
@@ -17,6 +18,7 @@ function UserResults() {
   const [page, setPage] = useState(Math.round(initCards/cards))
   const [userQuery, setQuery] = useState("")
   const [firstSearch, setFS] = useState(true)
+  const [time, setTime] = useState(-1000)
 
   useEffect(() => {
     if(window.localStorage.getItem('users') === null) 
@@ -41,18 +43,21 @@ function UserResults() {
   const handleInfScroll = async () => {
     try {
       window.removeEventListener("scroll", handleInfScroll);
-      setTimeout(()=>window.addEventListener("scroll", handleInfScroll),500)
-
+      
+      
       //   console.log("Total height :", document.documentElement.scrollHeight);
       // console.log("window height :", window.innerHeight);
       //   console.log("scroll height :", document.documentElement.scrollTop+window.innerHeight);
       // console.log(firstSearch);
+      console.log(d.getMilliseconds()," millis ", time);
       if (document.documentElement.scrollTop + window.innerHeight + beforeOffSetPx
         > document.documentElement.scrollHeight) {
-
+          
+          setTimeout(()=>window.addEventListener("scroll", handleInfScroll),200);
+        setTime(d.getMilliseconds());
         setPage((prev) => (prev+1));
         
-        console.log("render");
+        console.log("render page :",page);
       }
     } catch (error) {
       console.log(error);
