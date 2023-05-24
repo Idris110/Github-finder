@@ -120,7 +120,7 @@ function UserResults() {
       <div className="flex-1 flex justify-center items-center font-bold mb-20">
         {/* <img src={LoadingAnim} width="80px" alt="Loading..." /> */}
         <InfinitySpin
-          // width='150'
+          // width='150'testing
           color="#4fa94d"
         />
       </div>
